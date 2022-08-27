@@ -2,9 +2,6 @@
 Fabric Percounter is a simple tool to measure the time of a server start.
 
 ## Usage
-Run the Timer command with the server start command. For example:
-```
-/timer [command]
-```
+Run the command to start the server and then the time will be measured.
 
-
+It can be displayed as a Toast or in the chat.
