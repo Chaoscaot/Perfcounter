@@ -15,6 +15,9 @@
   "entrypoints": {
     "main": [
       "de.chaoscaot.perfcounter.Perfcounter"
+    ],
+    "modmenu": [
+      "de.chaoscaot.perfcounter.config.ModMenuIntegration"
     ]
   },
   "mixins": [

@@ -1,19 +1,21 @@
 package de.chaoscaot.perfcounter;
 
+import com.google.gson.Gson;
+import de.chaoscaot.perfcounter.config.ConfigHolder;
+import de.chaoscaot.perfcounter.config.TimerConfig;
+import me.shedaniel.autoconfig.AutoConfig;
+import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.text.Text;
 
 public class Perfcounter implements ModInitializer {
     public static long startTime = 0;
+    public static String command = "";
+
+    private static final Gson gson = new Gson();
 
     @Override
     public void onInitialize() {
-        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> TimeCommand.register(dispatcher));
-    }
-
-    public static void sendMessage(String message) {
-        MinecraftClient.getInstance().player.sendMessage(Text.literal(message));
+        AutoConfig.register(TimerConfig.class, GsonConfigSerializer::new);
+        ConfigHolder.timerConfig = AutoConfig.getConfigHolder(TimerConfig.class).getConfig();
     }
 }
